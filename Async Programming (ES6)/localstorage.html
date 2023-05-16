@@ -1,0 +1,32 @@
+<!-- Task.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webstorage</title>
+</head>
+<body>
+    <label for="uname">Enter Your Name</label>
+    <input type="text" id="uname"><br><br>
+    <button>Store Data</button><br><br>
+
+    <a href="details.html">Show Storage Data</a>
+    <script>
+        let storeData = ()=> {
+            const input = document.getElementById('uname').value;
+
+            if (input) {
+                let names = JSON.parse(localStorage.getItem('data')) || [];
+                names.push(input);
+                let arrayString = localStorage.setItem('data', JSON.stringify(names));
+                alert("Data stored in localStorage");
+                document.getElementById('uname').value = "";
+            }
+        }
+        let btn = document.querySelector("button")
+        btn.onclick = storeData;
+    </script>
+</body>
+</html>
